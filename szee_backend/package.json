@@ -1,0 +1,46 @@
+{
+  "name": "szee_backend",
+  "version": "1.0.0",
+  "description": "SZEE WebApp Backend",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "node build/index.js",
+    "predev": "npm run swagger",
+    "prebuild": "npm run swagger",
+    "build": "tsc",
+    "dev": "concurrently \"nodemon\" \"nodemon -x tsoa spec\"",
+    "swagger": "tsoa spec",
+    "debug": "export DEBUG=* && npm run start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://ZarzadzanieEnergia@dev.azure.com/ZarzadzanieEnergia/System%20Zarz%C4%85dzania%20Energi%C4%85%20Elektryczn%C4%85/_git/SZEE%20-%20Backend"
+  },
+  "author": "Michał Pawłowski",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "swagger-ui-express": "^4.5.0",
+    "tsoa": "^4.1.3"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.14",
+    "@types/node": "^18.11.3",
+    "@types/swagger-ui-express": "^4.1.3",
+    "concurrently": "^7.5.0",
+    "nodemon": "^2.0.20",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.4"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "src"
+    ],
+    "ext": "ts",
+    "exec": "ts-node src/index.ts"
+  }
+}
