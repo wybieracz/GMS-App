@@ -1,5 +1,11 @@
-import { Router, Request, Response } from 'express';
-import { Route, Get, Path } from "tsoa";
+import { Request, Response, Router } from 'express';
+import * as umd from '../Middlewares/userMiddleware';
+import * as mmd from '../Middlewares/mainMiddleware'
+import { IUser } from '../Models/User';
+import { ICredentials } from '../Models/Auth';
+import MainService from '../Services/MainService';
+import UserService from '../Services/UserService';
+import { Route, Tags, Post, Request as Req } from 'tsoa';
 
 export abstract class Controller {
   public router: Router;
@@ -12,22 +18,42 @@ export abstract class Controller {
   protected abstract routes(): void;
 }
 
-@Route("")
 class MainController extends Controller {
-  private static BASE_URL = '/';
+  
+  private userService: UserService;
+  private mainService: MainService;
 
   constructor() {
     super();
+    this.userService = new UserService();
+    this.mainService = new MainService();
   }
 
-  private main(req: Request, res: Response) {
-    res.render('Grid Management System', {
-      title: 'GMS'
-    });
+  private register(req: Request, res: Response) {
+    const userData: IUser = req.body;
+    this.mainService.register(userData)
+    .then(result => res.status(201).send(result))
+    .catch(err => res.status(400));
+  }
+
+  private login(req: Request, res: Response) {
+    const credentials: ICredentials = req.body;
+    this.mainService.login(credentials, res.locals.userId)
+    .then(result => res.cookie("token", result, { maxAge: 60 * 60 * 1000, httpOnly: true, secure: false, sameSite: 'none' }).status(200).end())
+    .catch(err => res.status(400));
+  }
+
+  private logout(req: Request, res: Response) {
+    const userId = req.body.id;
+    this.mainService.logout(userId)
+    .then(result => res.cookie("token", result, { maxAge: 0, httpOnly: true, secure: false, sameSite: 'none' }).status(200).end())
+    .catch(err => res.status(400));
   }
 
   protected routes() {
-    this.router.get('/', this.main.bind(this));
+    this.router.post('/register', umd.checkMail, umd.checkPassword, this.register.bind(this));
+    this.router.post('/login', mmd.checkCredentials, this.login.bind(this));
+    this.router.post('/logout', this.logout.bind(this));
   }
 }
 

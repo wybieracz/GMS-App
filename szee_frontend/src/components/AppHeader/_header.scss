@@ -1,0 +1,22 @@
+@use '@carbon/react/scss/colors';
+
+.cds--layer-one {
+  top: 0;
+  position: sticky;
+  z-index: 8000;
+  height: 3rem;
+}
+
+.cds--header__global .cds--popover-content {
+  background-color: colors.$gray-20;
+}
+
+.cds--header__global .cds--popover-caret {
+    background-color: colors.$gray-20;
+}
+
+.cds--header__global {
+  circle {
+    fill: colors.$red-60;
+  }
+}

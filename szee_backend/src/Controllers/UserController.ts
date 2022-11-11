@@ -1,11 +1,8 @@
-import { Route, Get, Path } from "tsoa";
 import { Request, Response } from "express";
-import { Controller } from "./MainController";
+import * as umd from '../Middlewares/userMiddleware';
+import * as mmd from '../Middlewares/mainMiddleware'
 import UserService from "../Services/UserService";
-
-// interface UserResponse {
-//   message: string;
-// }
+import { Controller } from "./MainController";
 
 class UserController extends Controller {
 
@@ -16,23 +13,15 @@ class UserController extends Controller {
     this.userService = new UserService();
   }
 
-  // @Get("{userId}")
-  // private async getUser(@Path() userId: string): Promise<UserResponse> {
-  //   return {
-  //     message: `GET requested for id ${userId}`
-  //   };
-  // }
-
   private getUser(req: Request, res: Response) {
-    
-    this.userService.getUsername(req.params.userId)
+    this.userService.getUser(res.locals.userId)
     .then(result => res.send(result))
-    .catch(err => res.status(400))
+    .catch(err => res.status(400));
   }
 
   protected routes() {
-    this.router.get('/:userId', this.getUser.bind(this));
+    this.router.get('', mmd.checkSession, this.getUser.bind(this));
   }
 }
 
-export default new UserController().router
+export default new UserController().router;

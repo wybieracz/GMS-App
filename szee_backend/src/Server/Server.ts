@@ -1,26 +1,32 @@
-import express, { Application } from 'express';
-import swaggerUi from "swagger-ui-express";
 import cors from 'cors';
+import express, { Application } from 'express';
+import { Sequelize } from 'sequelize-typescript';
+import swaggerUi from "swagger-ui-express";
 import MainController from '../Controllers/MainController';
 import UserController from '../Controllers/UserController';
-
+import getDBClient from '../Database/dbClient';
+import cookieParser from 'cookie-parser'
+require('dotenv').config({ path: './../.env' });
 
 export class Server {
 
     private port: string | undefined;
     private app: Application;
+    private dbClient: Sequelize;
 
     constructor() {
-        this.port = process.env.APP_PORT || '8000';
+        this.port = process.env.APP_PORT;
         this.app = express();
         this.configureMiddleware();
         this.configureRoutes();
+        this.dbClient = getDBClient();
     }
 
     private configureMiddleware() {
+        this.app.use(cors());
         this.app.use(express.json());
         this.app.use(express.static("public"));
-        this.app.use(cors());
+        this.app.use(cookieParser())
         this.app.use(
             "/docs",
             swaggerUi.serve,
@@ -29,6 +35,7 @@ export class Server {
     }
 
     private configureRoutes() {
+        this.app.use('/', MainController);
         this.app.use('/user', UserController);
     }
 

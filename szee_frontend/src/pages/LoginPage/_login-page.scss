@@ -1,0 +1,22 @@
+@use '@carbon/react/scss/spacing' as *;
+
+.login-page {
+  
+  &__button {
+    width: 50%!important;
+    max-width: 50%!important;
+  }
+
+  &__tile {
+    padding: 0!important;
+    margin-top: $spacing-13;
+  }
+
+  &__content {
+    padding: $spacing-05;
+    margin-bottom: $spacing-04;
+    h3 {
+      margin-bottom: $spacing-07;
+    }
+  }
+}

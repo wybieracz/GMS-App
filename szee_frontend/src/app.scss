@@ -1,0 +1,14 @@
+@use '@carbon/react/scss/themes';
+@use '@carbon/react';
+@use './pages/LoginPage/login-page';
+@use './pages/RegisterPage/register_page';
+@use './components/Notification/notification';
+
+.content {
+  padding: 0;
+  margin-top: 3rem;
+}
+
+.cds--g100 {
+  background: black;
+}

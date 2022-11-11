@@ -1,0 +1,19 @@
+@use '@carbon/layout';
+@use '@carbon/motion';
+
+.notification-context__wrapper {
+    position: fixed;
+    right: layout.$spacing-03;
+    top: calc(layout.$spacing-03 + 48px);
+}
+.notification-context__wrapper__relative {
+    position: relative;
+}
+
+.notification {
+    position: absolute;
+    right: 0;
+    transform: translate(calc(var(--gone) * (100% + layout.$spacing-03)), var(--y, 0));
+    opacity: calc(1 - var(--gone));
+    transition: transform motion.$duration-moderate-02, opacity motion.$duration-moderate-02;
+}
