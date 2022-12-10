@@ -20,8 +20,8 @@ export default class User extends Model<User> {
     return {
       id: this.id,
       email: this.email,
-      name: this.name,
-      surname: this.surname
+      name: this.name ? this.name : "",
+      surname: this.surname ? this.surname : ""
     }
   }
 }

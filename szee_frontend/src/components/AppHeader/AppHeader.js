@@ -34,10 +34,10 @@ const AppHeader = ({ user, setUser }) => {
                 <HeaderMenuItem element={Link} to='/'>
                   Dashboard
                 </HeaderMenuItem>
-                <HeaderMenuItem element={Link} to='/'>
+                <HeaderMenuItem element={Link} to='/devices'>
                   Devices
                 </HeaderMenuItem>
-                <HeaderMenuItem element={Link} to='/'>
+                <HeaderMenuItem element={Link} to='/settings'>
                   Settings
                 </HeaderMenuItem>
               </>
@@ -56,10 +56,10 @@ const AppHeader = ({ user, setUser }) => {
                     <HeaderMenuItem element={Link} to='/'>
                       Dashboard
                     </HeaderMenuItem>
-                    <HeaderMenuItem element={Link} to='/'>
+                    <HeaderMenuItem element={Link} to='/devices'>
                       Devices
                     </HeaderMenuItem>
-                    <HeaderMenuItem element={Link} to='/'>
+                    <HeaderMenuItem element={Link} to='/settings'>
                       Settings
                     </HeaderMenuItem>
                   </>

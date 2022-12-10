@@ -1,0 +1,25 @@
+@use '@carbon/react/scss/spacing' as *;
+
+.device-settings {
+  margin: 0;
+
+  &__filed {
+    width: 100%!important;
+  }
+
+  &__toggle {
+    margin-left: $spacing-09;
+  }
+
+  .cds--slider__range-label {
+    margin-right: 0!important;
+  }
+
+  .cds--slider-container {
+    width: 100%!important;
+  }
+
+  .cds--slider {
+    max-width: 100%!important;
+  }
+}

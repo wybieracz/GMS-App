@@ -1,0 +1,18 @@
+.auto-mode-rule {
+
+  &__hour {
+    width: 50%;
+
+    .cds--dropdown {
+      border-right: solid 1.5px var(--cds-layer-accent-03);
+    }
+  }
+
+  &__minute {
+    width: 50%;
+  }
+
+  &__remove{
+    margin-top: 1.65rem;
+  }
+}

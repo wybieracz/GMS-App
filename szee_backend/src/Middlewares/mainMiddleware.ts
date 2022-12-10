@@ -23,7 +23,6 @@ export async function checkCredentials(req: Request, res: Response, next: NextFu
   if(!hashMatch) return res.status(400).send('Bad credentails.');
 
   res.locals = { userId: user.id };
-  console.log(res.locals)
   next();
 }
 

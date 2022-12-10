@@ -1,0 +1,24 @@
+@use '@carbon/react/scss/spacing' as *;
+
+.delete-button {
+  height: $spacing-08;
+  width: $spacing-08;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0;
+  cursor: pointer;
+
+  :hover {
+    background-color: var(--cds-layer-hover);
+    border-bottom: solid 1.5px var(--cds-layer-accent-03);
+  }
+
+  &__icon {
+    padding: .7rem .8rem .65rem .8rem;
+
+    :hover {
+      border-bottom: 0;
+    }
+  }
+}

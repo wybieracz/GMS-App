@@ -21,8 +21,16 @@ export default class Telemetry extends Model<Telemetry> {
   current!: number;
 
   @AllowNull(false)
-  @Column(DataType.BIGINT)
-  timestamp!: number;
+  @Column(DataType.DOUBLE)
+  power!: number;
+
+  @AllowNull(false)
+  @Column(DataType.DOUBLE)
+  kWh!: number;
+
+  @AllowNull(false)
+  @Column("timestamp")
+  timestamp!: string;
 
   public getTelemetryDTO(): TelemetryDTO {
     return {
@@ -30,6 +38,8 @@ export default class Telemetry extends Model<Telemetry> {
       deviceId: this.deviceId,
       voltage: this.voltage,
       current: this.current,
+      power: this.power,
+      kWh: this.kWh,
       timestamp: this.timestamp
     }
   }
@@ -40,5 +50,7 @@ export interface TelemetryDTO {
   deviceId: string;
   voltage: number;
   current: number;
-  timestamp: number;
+  power: number;
+  kWh: number;
+  timestamp: string;
 }

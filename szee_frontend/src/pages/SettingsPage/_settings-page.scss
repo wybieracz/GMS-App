@@ -1,0 +1,23 @@
+@use '@carbon/react/scss/spacing' as *;
+
+.settings-page {
+  padding: 0;
+  margin: 0;
+  max-width: 100%;
+
+  &__content {
+    padding-top: $spacing-07;
+    padding-right: $spacing-08;
+    padding-left: $spacing-08;
+    padding-bottom: $spacing-08;
+    margin: 0;
+  }
+
+  &__title {
+    margin-bottom: $spacing-09;
+  }
+
+  &__device {
+    cursor: pointer;
+  }
+}

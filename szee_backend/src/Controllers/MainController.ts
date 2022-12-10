@@ -1,11 +1,10 @@
 import { Request, Response, Router } from 'express';
+import * as mmd from '../Middlewares/mainMiddleware';
 import * as umd from '../Middlewares/userMiddleware';
-import * as mmd from '../Middlewares/mainMiddleware'
-import { IUser } from '../Models/User';
 import { ICredentials } from '../Models/Auth';
+import { IUser } from '../Models/User';
 import MainService from '../Services/MainService';
 import UserService from '../Services/UserService';
-import { Route, Tags, Post, Request as Req } from 'tsoa';
 
 export abstract class Controller {
   public router: Router;
