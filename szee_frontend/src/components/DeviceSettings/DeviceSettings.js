@@ -27,7 +27,7 @@ const DeviceSettings = ({ device, setDevice, sessionExpired }) => {
 
   return (
     <Grid className='device-settings'>
-      <Column lg={8} md={6} sm={4} className='device-settings'>
+      <Column lg={8} md={7} sm={4}>
       {loaded ?
         <Stack gap={7}>
           <TextInput
@@ -70,8 +70,8 @@ const DeviceSettings = ({ device, setDevice, sessionExpired }) => {
             onChange={(e) => setBrightness(e.value)}
             size='lg'
           />
-          <Grid className='device-settings'>
-            <Column lg={5} md={4} sm={2} className='device-settings'>
+          <Grid className='device-settings__counter'>
+            <Column lg={5} md={4} sm={2} className='device-settings__counter'>
               <TextInput
                 id='input-period'
                 type="number"
@@ -81,7 +81,7 @@ const DeviceSettings = ({ device, setDevice, sessionExpired }) => {
                 disabled={!reset}
               />
             </Column>
-            <Column lg={3} md={2} sm={2} className='device-settings'>
+            <Column lg={3} md={3} sm={2} className='device-settings__counter'>
               <Toggle
                 className='device-settings__toggle'
                 labelText='Auto reset counter'

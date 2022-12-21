@@ -2,6 +2,11 @@
 
 .device-mode {
 
+  &__content {
+    margin-left: 1rem;
+    margin-right: 1rem;;
+  }
+
   &__input {
     margin-bottom: $spacing-07;
   }

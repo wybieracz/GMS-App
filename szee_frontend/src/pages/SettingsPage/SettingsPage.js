@@ -1,9 +1,8 @@
-import { Column, Grid, TextInput, Stack, Button } from '@carbon/react';
+import { Save } from '@carbon/icons-react';
+import { Button, Column, Grid, Stack, TextInput } from '@carbon/react';
 import React, { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import NotificationContext from '../../context/NotificationContext';
 import { checkPassword } from '../RegisterPage/RegisterPageUtils';
-import { Save } from '@carbon/icons-react'
 import { handlePasswordChange } from './SettingsPageUtils';
 
 const SettingsPage = ({ user, sessionExpired }) => {
@@ -36,6 +35,7 @@ const SettingsPage = ({ user, sessionExpired }) => {
                 labelText="Old password"
                 value={oldPassword}
                 onChange={(e) => setOldPassword(e.target.value)}
+                disabled={!user.loaded}
               />
               <TextInput
                 id="text-input-password-new"
@@ -48,6 +48,7 @@ const SettingsPage = ({ user, sessionExpired }) => {
                 }}
                 invalidText='The password should have 8 or more characters including lowercase and uppercase letters, a number and a special character.'
                 invalid={!checkPassword(newPassword) && begin}
+                disabled={!user.loaded}
               />
               <TextInput
                 id="text-input-password-repeat"
@@ -57,6 +58,7 @@ const SettingsPage = ({ user, sessionExpired }) => {
                 onChange={(e) => setNewPasswordRepeat(e.target.value)}
                 invalidText='Passwords must match.'
                 invalid={newPassword !== newPasswordRepeat}
+                disabled={!user.loaded}
               />
               <Button 
                 kind='primary'

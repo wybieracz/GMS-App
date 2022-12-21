@@ -7,6 +7,7 @@ import UserController from '../Controllers/UserController';
 import getDBClient from '../Database/dbClient';
 import cookieParser from 'cookie-parser'
 import DeviceController from '../Controllers/DeviceController';
+import TelemetryController from '../Controllers/TelemetryController';
 require('dotenv').config({ path: './../.env' });
 
 export class Server {
@@ -39,6 +40,7 @@ export class Server {
         this.app.use('/', MainController);
         this.app.use('/user', UserController);
         this.app.use('/device', DeviceController);
+        this.app.use('/telemetry', TelemetryController);
     }
 
     public startServer() {

@@ -13,7 +13,7 @@ const DeviceModeAuto = ({ mode, device, setDevice, notifications, sessionExpired
       <Column lg={16} md={6} sm={4}>
         { rules.map((_, i) => <AutoModeRule key={`${i}:${rules.length}`} id={i} rules={[...rules]} setRules={setRules} />) }
         <ButtonSet>
-            <Button kind='secondary' renderIcon={Add} onClick={() => setRules([...rules, [0, 0, 0, 0, 0]])}>
+            <Button kind='secondary' renderIcon={Add} onClick={() => setRules([...rules, [0, 0, 0, 0, 0]])} disabled={rules.length >= 21 }>
               Add rule
             </Button>
             <Button 

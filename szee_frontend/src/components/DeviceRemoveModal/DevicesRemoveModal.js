@@ -1,5 +1,5 @@
 import { Modal } from '@carbon/react';
-import React, { useState } from 'react';
+import React from 'react';
 
 const DeviceRemoveModal = ({ modal, setModal, notifications, device }) => {
 

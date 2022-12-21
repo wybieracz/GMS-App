@@ -19,12 +19,10 @@ export abstract class Controller {
 
 class MainController extends Controller {
   
-  private userService: UserService;
   private mainService: MainService;
 
   constructor() {
     super();
-    this.userService = new UserService();
     this.mainService = new MainService();
   }
 
@@ -38,14 +36,14 @@ class MainController extends Controller {
   private login(req: Request, res: Response) {
     const credentials: ICredentials = req.body;
     this.mainService.login(credentials, res.locals.userId)
-    .then(result => res.cookie("token", result, { maxAge: 60 * 60 * 1000, httpOnly: true, secure: false, sameSite: 'none' }).status(200).end())
+    .then(result => res.cookie("token", result, { maxAge: 60 * 60 * 1000, httpOnly: false, secure: false, sameSite: 'none' }).status(200).end())
     .catch(err => res.status(400));
   }
 
   private logout(req: Request, res: Response) {
     const userId = req.body.id;
     this.mainService.logout(userId)
-    .then(result => res.cookie("token", result, { maxAge: 0, httpOnly: true, secure: false, sameSite: 'none' }).status(200).end())
+    .then(result => res.cookie("token", result, { maxAge: 0, httpOnly: false, secure: false, sameSite: 'none' }).status(200).end())
     .catch(err => res.status(400));
   }
 

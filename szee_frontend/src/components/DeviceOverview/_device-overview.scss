@@ -1,0 +1,41 @@
+.device-overview {
+  &__chart {
+    margin-bottom: 2rem;
+  }
+
+  .cds--date-picker {
+    width: 100%!important;
+  }
+
+  .cds--date-picker-container {
+    width: 100%!important;
+  }
+
+  .cds--date-picker-input__wrapper {
+    width: 100%!important;
+  }
+
+  .cds--date-picker__input {
+    width: 100%!important;
+  }
+
+  &__date-input {
+    width: 100%!important;
+
+    .cds--date-picker {
+      width: 100%!important;
+
+      .cds--date-picker-container {
+        width: 100%!important;
+
+        .cds--date-picker-input__wrapper {
+          width: 100%!important;
+
+          .cds--date-picker__input {
+            width: 100%!important;
+          }
+        }
+      }
+    }
+  }
+}

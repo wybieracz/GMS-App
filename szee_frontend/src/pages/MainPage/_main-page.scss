@@ -1,0 +1,22 @@
+@use '@carbon/react/scss/spacing' as *;
+
+.main-page {
+
+  &__title {
+    display: flex;
+    overflow: hidden;
+    margin-top: $spacing-07;
+    margin-bottom: $spacing-09;
+  }
+
+  &__title--skeleton {
+    margin-top: $spacing-09;
+    padding-bottom: $spacing-10;
+    width: 20%!important;
+  }
+
+  &__chart {
+    padding: 1rem 1rem 1.5rem 1.5rem;
+    margin-bottom: 2rem;
+  }
+}

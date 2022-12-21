@@ -54,3 +54,27 @@ export interface TelemetryDTO {
   kWh: number;
   timestamp: string;
 }
+
+export interface TimeChartDTO {
+  group: string;
+  timestamp: string;
+  value: number
+}
+
+export interface ChartDTO {
+  group: string;
+  value: number;
+}
+
+export interface MultipleChartDTO {
+  group: string;
+  power: number;
+  kWh: number;
+}
+
+export interface HistoryDTO {
+  voltage: Array<TimeChartDTO>;
+  current: Array<TimeChartDTO>;
+  power: Array<TimeChartDTO>;
+  kWh: Array<TimeChartDTO>;
+}

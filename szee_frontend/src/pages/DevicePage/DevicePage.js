@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import DeviceMode from '../../components/DeviceMode/DeviceMode';
 import DeviceSettings from '../../components/DeviceSettings/DeviceSettings';
+import DeviceOverview from '../../components/DeviceOverview/DeviceOverview';
 import StatusTag from '../../components/StatusTag/StatusTag';
 import NotificationContext from '../../context/NotificationContext';
 import { getDevice, ifTabDisabled } from './DevicePageUtils';
@@ -12,11 +13,17 @@ const DevicePage = ({ user, sessionExpired }) => {
   const { id } = useParams();
   const notifications = useContext(NotificationContext);
   const [device, setDevice] = useState({ loaded: false });
-  const [modal, setModal] = useState(false)
 
   useEffect(() => {
     getDevice(id, setDevice, sessionExpired, notifications);
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      getDevice(id, setDevice, sessionExpired, notifications);
+    }, 30000);
+    return () => clearInterval(intervalId);
+  }, []);
 
   return (
     <Grid className='devices-page'>
@@ -44,7 +51,7 @@ const DevicePage = ({ user, sessionExpired }) => {
           </TabList>
           <TabPanels>
             <TabPanel className='device-page__content'>
-              Tab Panel 1
+              <DeviceOverview device={device} notifications={notifications} sessionExpired={sessionExpired} />
             </TabPanel>
             <TabPanel className='device-page__content'>
               <DeviceMode device={device} setDevice={setDevice} notifications={notifications} sessionExpired={sessionExpired} />

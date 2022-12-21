@@ -1,11 +1,14 @@
 @use '@carbon/react/scss/themes';
 @use '@carbon/react';
+@use '@carbon/charts/styles';
 
 @use './pages/LoginPage/login-page';
+@use './pages/LoadingPage/loading-page';
 @use './pages/DevicesPage/devices-page';
 @use './pages/RegisterPage/register_page';
 @use './pages/DevicePage/device-page';
 @use './pages/SettingsPage/settings-page';
+@use './pages/MainPage/main-page';
 
 @use './components/Notification/notification';
 @use './components/StatusTag/status-tag';
@@ -13,6 +16,8 @@
 @use './components/DeviceMode/device-mode';
 @use './components/AutoModeRule/auto-mode-rule';
 @use './components/DeleteButton/delete-button';
+@use './components/DeviceOverview/device-overview';
+@use './components/DeviceOverviewTile/device-overview-tile';
 
 .content {
   padding: 0;

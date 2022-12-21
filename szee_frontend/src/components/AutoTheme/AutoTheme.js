@@ -8,7 +8,7 @@ const setBodyBackground = (value) => {
 
 const mediaQuery = window?.matchMedia?.('(prefers-color-scheme: dark)')
 
-const newContextValue = (dark = mediaQuery?.matches ?? false) => (dark ? 'g100' : 'white')
+const newContextValue = (dark = mediaQuery?.matches ?? false) => (dark ? 'g100' : 'white3')
 const ThemeContext = createContext(newContextValue())
 
 const AutoTheme = ({ children }) => {

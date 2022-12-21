@@ -17,7 +17,7 @@ async function handleLogin(credentials, setInvalid, navigate, setUser) {
       axios
         .get('/user')
         .then(res => {
-          setUser(res.data)
+          setUser({ ...res.data, loaded: true })
           navigate('/main')
         })
     })

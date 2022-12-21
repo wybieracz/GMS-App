@@ -13,7 +13,7 @@ const DeviceMode = ({ device, setDevice, notifications, sessionExpired }) => {
   }, [device])
 
   return (
-    <Stack gap={7}>
+    <Stack gap={7} className='device-mode__content'>
       <RadioButtonGroup
         legendText="Mode"
         name="radio-button-group"

@@ -3,6 +3,8 @@ import { Body, Inject, Get, Route, Tags, Post } from "tsoa";
 import { defaultDeviceLive, defaultDeviceLiveWithSettings } from "../Consts/deviceConsts";
 import { getDeviceParams, getDeviceStatus, getDisplaySettings, getRules, getSettingsCharArray, getDevicesParams, getModeCharArray } from "../Helpers/deviceHelper";
 import Device, { DeviceDTO, DeviceLiveDTO, DeviceLiveWithSettingsDTO, IDeviceMode, IDeviceSettings, Status } from "../Models/Device";
+import { TimeChartDTO, HistoryDTO } from "../Models/Telemetry";
+import Telemetry from "../Models/Telemetry";
 import axios from "../Utils/axios";
 
 @Tags('Device')

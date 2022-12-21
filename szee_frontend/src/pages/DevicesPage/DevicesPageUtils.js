@@ -1,14 +1,14 @@
 import axios from "../../utils/axios";
 import StatusTag from "../../components/StatusTag/StatusTag"
 
-async function getDevices(setDevices, sessionExpired, notifications) {
+async function getDevices(setDevices, notifications, sessionExpired) {
   await axios
     .get('/device')
     .then(res => {
       setDevices({ data: res.data, loaded: true });
     })
     .catch((err) => {
-      if(err.response.status === 401) sessionExpired(notifications)
+      if(err.response.status === 401) sessionExpired(notifications);
       setDevices({ data: [], loaded: true })
   })
 }

@@ -1,0 +1,30 @@
+.device-overview-tile {
+  margin-bottom: 2rem;
+
+  &__header {
+    //font-size: .8rem;
+    justify-content: space-between;
+    display: flex;
+  }
+
+  &__value {
+    margin-top: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    
+    @media (max-width: 42rem) {
+      font-size: 1.5rem;
+    }
+
+
+    &--skeleton {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    &--offline {
+      color: var(--cds-text-disabled, #f4f4f4);
+      margin-top: 1rem;
+    }
+  }
+}

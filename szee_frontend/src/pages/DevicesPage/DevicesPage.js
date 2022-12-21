@@ -1,18 +1,15 @@
 import { Add } from '@carbon/icons-react';
 import {
-  Button, Column, DataTable,
-  Grid, Table, TableBody,
+  Button, Column, DataTable, DataTableSkeleton, Grid, Table, TableBody,
   TableCell, TableContainer,
   TableHead, TableHeader, TableRow, TableToolbar,
-  TableToolbarContent, TableToolbarSearch,
-  DataTableSkeleton
+  TableToolbarContent, TableToolbarSearch
 } from '@carbon/react';
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { getDevices } from './DevicesPageUtils';
-import { CellValue } from './DevicesPageUtils';
-import NotificationContext from '../../context/NotificationContext';
+import { useNavigate } from 'react-router-dom';
 import DevicesAddModal from '../../components/DevicesAddModal/DevicesAddModal';
+import NotificationContext from '../../context/NotificationContext';
+import { CellValue, getDevices } from './DevicesPageUtils';
 
 const headers = [
   { key: 'name', header: 'Name'},
@@ -30,10 +27,18 @@ const DevicesPage = ({ user, sessionExpired }) => {
   const notifications = useContext(NotificationContext);
   const [devices, setDevices] = useState({ loaded: false });
   const [modal, setModal] = useState(false);
+  const [sessionExpiredNotification, setSessionExpiredNotification] = useState(false);
 
   useEffect(() => {
-    getDevices(setDevices, sessionExpired, notifications);
-  }, [sessionExpired, notifications])
+    getDevices(setDevices, notifications, sessionExpired, sessionExpiredNotification, setSessionExpiredNotification);
+  }, []);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      getDevices(setDevices, notifications, sessionExpired);
+    }, 30000);
+    return () => clearInterval(intervalId);
+  }, []);
 
   return (
     <Grid className='devices-page'>
