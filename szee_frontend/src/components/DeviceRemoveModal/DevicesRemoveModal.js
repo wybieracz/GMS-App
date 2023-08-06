@@ -1,7 +1,8 @@
 import { Modal } from '@carbon/react';
 import React from 'react';
+import { remove } from './DevicesRemoveModalUtils';
 
-const DeviceRemoveModal = ({ modal, setModal, notifications, device }) => {
+const DeviceRemoveModal = ({ device, navigate, modal, setModal, notifications, sessionExpired }) => {
 
   return (
     <Modal
@@ -12,8 +13,8 @@ const DeviceRemoveModal = ({ modal, setModal, notifications, device }) => {
       modalLabel='Account resources'
       primaryButtonText='Unlink'
       secondaryButtonText='Cancel'
-      onKeyDown={() => {}}
-      onRequestSubmit={() => {}}
+      onKeyDown={() => remove(device, setModal, notifications, sessionExpired)}
+      onRequestSubmit={() => remove(device, navigate, setModal, notifications, sessionExpired)}
       onSecondarySubmit={() => setModal(false)}
       onRequestClose={() => setModal(false)}>
     </Modal>

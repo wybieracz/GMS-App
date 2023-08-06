@@ -102,6 +102,7 @@ const RegisterPage = () => {
               size='xl'
               renderIcon={ArrowRight}
               iconDescription='Arrow right'
+              disabled={invalid.name || invalid.surname || invalid.email || invalid.password}
               onClick={() => { 
                 setInvalid({ ...invalid, sent: true})
                 handleRegister(data, navigate, notifications)

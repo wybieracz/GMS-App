@@ -65,7 +65,7 @@ export function getKWhChartData(setKWhChartData, notifications, sessionExpired, 
         setSessionExpiredNotification(false)
       }
       else {
-        notifications.error(`Could not download current power compsumption status.`, 'Power compsumption')
+        notifications.error(`Could not download current power consumption status.`, 'Power consumption')
         setKWhChartData({ data: [], loaded: true })
       }
     })

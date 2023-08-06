@@ -68,7 +68,7 @@ const DeviceOverview = ({ device, notifications, sessionExpired }) =>  {
       </Column>
       <Column lg={4} md={8} sm={4}>
         <DeviceOverviewTile
-          name='Power compsumption'
+          name='Power consumption'
           value={device.kWh}
           precision={3}
           unit='kWh'
@@ -123,7 +123,7 @@ const DeviceOverview = ({ device, notifications, sessionExpired }) =>  {
                 options={{
                   ...kWhChartOptions,
                   theme: theme,
-                  color: { scale: { "Power compsumption": theme === "white" ? "#005d5d" : "#007d79"}}
+                  color: { scale: { "Power consumption": theme === "white" ? "#005d5d" : "#007d79"}}
                 }}
               />
             </div>

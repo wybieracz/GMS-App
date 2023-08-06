@@ -151,7 +151,7 @@ const MainPage = ({ user, sessionExpired }) => {
                 options={{
                   ...summaryKWhChartOptions,
                   theme: theme,
-                  color: { scale: { "Power compsumption": theme === "white" ? "#005d5d" : "#007d79"}},
+                  color: { scale: { "Power consumption": theme === "white" ? "#005d5d" : "#007d79"}},
                   experimental: true,
                   zoomBar: { top: { enabled: true }}
                 }}

@@ -27,10 +27,9 @@ const DevicesPage = ({ user, sessionExpired }) => {
   const notifications = useContext(NotificationContext);
   const [devices, setDevices] = useState({ loaded: false });
   const [modal, setModal] = useState(false);
-  const [sessionExpiredNotification, setSessionExpiredNotification] = useState(false);
 
   useEffect(() => {
-    getDevices(setDevices, notifications, sessionExpired, sessionExpiredNotification, setSessionExpiredNotification);
+    getDevices(setDevices, notifications, sessionExpired);
   }, []);
 
   useEffect(() => {
@@ -110,7 +109,7 @@ const DevicesPage = ({ user, sessionExpired }) => {
           </DataTable>
         : <DataTableSkeleton headers={headers} showHeader={false} rowCount={3} columnCount={7} />}
       </Column>
-      <DevicesAddModal modal={modal} setModal={setModal} notifications={notifications} devices={devices} setDevices={setDevices} />
+      <DevicesAddModal modal={modal} setModal={setModal} notifications={notifications} devices={devices} setDevices={setDevices} sessionExpired={sessionExpired} />
     </Grid>
   )
 }

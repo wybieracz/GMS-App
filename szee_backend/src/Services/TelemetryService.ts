@@ -26,7 +26,7 @@ export default class TelemetryService {
       voltageData.push({ group: "Voltage", timestamp: e.timestamp, value: e.voltage });
       currentData.push({ group: "Current", timestamp: e.timestamp, value: e.current });
       powerData.push({ group: "Power", timestamp: e.timestamp, value: e.power });
-      kWhData.push({ group: "Power compsumption", timestamp: e.timestamp, value: e.kWh });
+      kWhData.push({ group: "Power consumption", timestamp: e.timestamp, value: e.kWh });
     })
 
     return { voltage: voltageData, current: currentData, power: powerData, kWh: kWhData }
@@ -48,7 +48,7 @@ export default class TelemetryService {
       voltageData.push({ group: "Voltage", timestamp: e.timestamp, value: e.voltage });
       currentData.push({ group: "Current", timestamp: e.timestamp, value: e.current });
       powerData.push({ group: "Power", timestamp: e.timestamp, value: e.power });
-      kWhData.push({ group: "Power compsumption", timestamp: e.timestamp, value: e.kWh });
+      kWhData.push({ group: "Power consumption", timestamp: e.timestamp, value: e.kWh });
     })
 
     return { voltage: voltageData, current: currentData, power: powerData, kWh: kWhData }

@@ -17,10 +17,10 @@ export async function checkCredentials(req: Request, res: Response, next: NextFu
   const user = await User.findOne({
     where: { email: {[Op.eq]: email}}
   })
-  if(!user) return res.status(400).send('Bad credentails.');
+  if(!user) return res.status(400).send('Bad credentials.');
 
   const hashMatch = await compare(password, user.hash);
-  if(!hashMatch) return res.status(400).send('Bad credentails.');
+  if(!hashMatch) return res.status(400).send('Bad credentials.');
 
   res.locals = { userId: user.id };
   next();

@@ -12,7 +12,7 @@ import axios from "../Utils/axios";
 export default class DeviceService {
 
   @Get()
-  public async getDevices(@Inject() userId: number): Promise<DeviceLiveDTO[]> {
+  public async getDevices(@Inject() userId: number): Promise<Array<DeviceLiveDTO>> {
 
     const devices: DeviceDTO[] = await Device
       .findAll({ where: { userId: {[Op.eq]: userId}} })

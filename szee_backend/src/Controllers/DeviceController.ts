@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
-import * as umd from '../Middlewares/userMiddleware';
-import * as mmd from '../Middlewares/mainMiddleware'
-import * as dmd from '../Middlewares/deviceMiddleware'
+import * as mmd from '../Middleware/mainMiddleware'
+import * as dmd from '../Middleware/deviceMiddleware'
 import { Controller } from "./MainController";
 import DeviceService from "../Services/DeviceService";
 import { Status } from "../Models/Device";
@@ -18,19 +17,19 @@ class DeviceController extends Controller {
   private getDevices(req: Request, res: Response) {
     this.deviceService.getDevices(res.locals.userId)
     .then(result => res.send(result))
-    .catch(err => res.status(400));
+    .catch(err => res.status(400).end());
   }
 
   private getDevice(req: Request, res: Response) {
     this.deviceService.getDevice(res.locals.device)
     .then(result => res.send(result))
-    .catch(err => res.status(400));
+    .catch(err => res.status(400).end());
   }
 
   private setSettings(req: Request, res: Response) {
     this.deviceService.setSettings(req.body, res.locals.device)
     .then(result => res.send(result))
-    .catch(err => res.status(400));
+    .catch(err => res.status(400).end());
   }
 
   private setMode(req: Request, res: Response) {
@@ -39,7 +38,7 @@ class DeviceController extends Controller {
       if(result.status === Status.Offline) res.status(404).send(result)
       else res.send(result)
     })
-    .catch(err => res.status(400));
+    .catch(err => res.status(400).end());
   }
 
   protected routes() {

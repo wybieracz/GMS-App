@@ -1,7 +1,6 @@
-import { result } from "lodash";
 import { Op } from "sequelize";
 import { Body, Delete, Get, Inject, Patch, Path, Post, Route, Tags } from "tsoa";
-import Device, { DeviceDTO, IDeviceCredentails } from "../Models/Device";
+import Device, { DeviceDTO, IDeviceCredentials } from "../Models/Device";
 import Telemetry from "../Models/Telemetry";
 import User, { UserDTO } from "../Models/User";
 import axios from "../Utils/axios";
@@ -21,7 +20,7 @@ export default class UserService {
   }
 
   @Post('/device')
-  public async addDevice(@Body() credentials: IDeviceCredentails, @Inject() userId: number): Promise<DeviceDTO> {
+  public async addDevice(@Body() credentials: IDeviceCredentials, @Inject() userId: number): Promise<DeviceDTO> {
     await axios
       .post(credentials.id + '/methods?' + process.env.API_VERSION, 
         { methodName: "setRegistered", 
@@ -55,13 +54,15 @@ export default class UserService {
         }
       )
       .then((res: { data: any; }) => { 
+        console.log(res.data)
         if(res.data.status === 200) {
           Telemetry.destroy({ where: { deviceId: id }})
-          result = Device.update({ userId: null }, {
+          result = Device.update({ userId: null, name: null }, {
             where: { id: id }
           });
         }
       })
+      .catch((err: any) => console.log(err))
     return result[0] === 1 ? true : false;
   }
 

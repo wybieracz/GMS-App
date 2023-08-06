@@ -6,10 +6,12 @@ import { lcdSettings } from '../../consts/deviceSettings';
 import { saveSettings, handlePeriodStartChange } from './DeviceSettingsUtils';
 import NotificationContext from '../../context/NotificationContext';
 import DeviceRemoveModal from '../DeviceRemoveModal/DevicesRemoveModal';
+import { useNavigate } from 'react-router-dom';
 
 const DeviceSettings = ({ device, setDevice, sessionExpired }) => {
 
   const notifications = useContext(NotificationContext);
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [settings, setSettings] = useState([0, 0]);
   const [brightness, setBrightness] = useState(0);
@@ -124,8 +126,8 @@ const DeviceSettings = ({ device, setDevice, sessionExpired }) => {
             label="Dropdown menu options"
           />
           <SliderSkeleton />
-          <Grid className='device-settings'>
-            <Column lg={5} md={4} sm={2} className='device-settings'>
+          <Grid className='device-settings__counter'>
+            <Column lg={5} md={4} sm={2} className='device-settings__counter'>
               <TextInputSkeleton 
                 className='device-settings__text' 
                 labelText='Device name'
@@ -141,6 +143,7 @@ const DeviceSettings = ({ device, setDevice, sessionExpired }) => {
       </Column>
       <DeviceRemoveModal
         device={device}
+        navigate={navigate}
         modal={modal}
         setModal={setModal}
         sessionExpired={sessionExpired}

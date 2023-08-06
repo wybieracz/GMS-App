@@ -1,4 +1,4 @@
-export const NotificationStatus = {
+export const NotificationType = {
   SUCCESS: 'SUCCESS',
   ERROR: 'ERROR',
   WARNING: 'WARNING',

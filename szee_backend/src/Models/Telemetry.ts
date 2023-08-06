@@ -55,15 +55,13 @@ export interface TelemetryDTO {
   timestamp: string;
 }
 
-export interface TimeChartDTO {
-  group: string;
-  timestamp: string;
-  value: number
-}
-
 export interface ChartDTO {
   group: string;
   value: number;
+}
+
+export interface TimeChartDTO extends ChartDTO {
+  timestamp: string;
 }
 
 export interface MultipleChartDTO {

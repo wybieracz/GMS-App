@@ -65,11 +65,11 @@ export const powerChartOptions = {
 }
 
 export const kWhChartOptions = {
-  "title": "Power comsumption",
+  "title": "Power consumption",
   "axes": {
 		"left": {
 			"mapsTo": "value",
-			"title": "Power compsumption [kWh]",
+			"title": "Power consumption [kWh]",
 			"scaleType": "linear"
 		},
 		"bottom": {
@@ -117,7 +117,7 @@ export const statusChartOptions = {
 }
 
 export const kWhPieChartOptions = {
-  "title": "Devices power compsumption",
+  "title": "Devices power consumption",
   "resizable": true,
 	"donut": {
 		"alignment": "center",
@@ -154,11 +154,11 @@ export const summaryPowerChartOptions = {
 }
 
 export const summaryKWhChartOptions = {
-  "title": "Summary power comsumption",
+  "title": "Summary power consumption",
   "axes": {
 		"left": {
 			"mapsTo": "kWh",
-			"title": "Power compsumption [kWh]",
+			"title": "Power consumption [kWh]",
 			"scaleType": "linear"
 		},
 		"bottom": {

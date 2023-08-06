@@ -7,15 +7,15 @@ export async function checkCredentials(req: Request, res: Response, next: NextFu
   const id = req.body.id;
   const connectionString = req.body.connectionString;
 
-  if(id.length !== 6 && connectionString.length !== 12) return res.status(400).send('Bad credentails.');
+  if(id.length !== 6 && connectionString.length !== 12) return res.status(400).send('Bad credentials.');
 
   const device = await Device.findByPk(id);
-  if(!device) return res.status(400).send('Bad credentails.');
+  if(!device) return res.status(400).send('Bad credentials.');
   if(device.userId === res.locals.userId) return res.status(409).send('This device is already assigned to your account.')
   if(device.userId) return res.status(403).send('This device is assigned to other account.')
 
   const hashMatch = await compare(connectionString, device.hash);
-  if(!hashMatch) return res.status(400).send('Bad credentails.');
+  if(!hashMatch) return res.status(400).send('Bad credentials.');
 
   next();
 }
@@ -56,21 +56,6 @@ export async function registerIfOnline(req: Request, res: Response, next: NextFu
       console.log(err)
       return res.status(404).send('Device is currently offline.');
     })
-}
-
-export async function unregisterIfOnline(req: Request, res: Response, next: NextFunction) {
-  
-  const id = req.params.id;
-
-  await axios
-    .post(id + '/methods?' + process.env.API_VERSION, 
-      { methodName: "setRegistered", 
-        responseTimeoutInSeconds: 5, 
-        payload: 0
-      }
-    )
-    .then(() => next())
-    .catch(() => next())
 }
 
 function ifHoursIncorrect(rules: Array<number>) {

@@ -21,7 +21,7 @@ function closeModal(setModal, setId, setIdInvalid, setConnectionString, setConne
   setConnectionStringInvalid(false)
 }
 
-async function addDevice(id, setId, connectionString, setConnectionString, setModal, notifications, devices, setDevices, setIdInvalid, setConnectionStringInvalid) {
+async function addDevice(id, setId, connectionString, setConnectionString, setModal, notifications, devices, setDevices, setIdInvalid, setConnectionStringInvalid, sessionExpired) {
   
   if(id.length !== 6) setIdInvalid(true)
   if(connectionString.length !== 12) setConnectionStringInvalid(true)
@@ -29,9 +29,9 @@ async function addDevice(id, setId, connectionString, setConnectionString, setMo
     await axios
     .post('/user/device', { id: id, connectionString: connectionString })
     .then((res) => {
-      getDevices(devices.data, setDevices)
+      getDevices(setDevices, notifications, sessionExpired);
       closeModal(setModal, setId, setIdInvalid, setConnectionString, setConnectionStringInvalid)
-      notifications.success(`${res.data.type} device successfully added to your acount.`, 'Device addition')
+      notifications.success(`${res.data.type} device successfully added to your account.`, 'Device addition')
     })
     .catch((err) => {
       closeModal(setModal, setId, setIdInvalid, setConnectionString, setConnectionStringInvalid)

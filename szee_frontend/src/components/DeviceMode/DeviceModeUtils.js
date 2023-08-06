@@ -69,7 +69,7 @@ export async function handleSetMode(mode, rules, device, setDevice, notification
       setDevice({ ...res.data, loaded: true })
     })
     .catch((err) => {
-      if(err.response.status === 401) sessionExpired(notifications, true)
+      if(err.response.status === 401) sessionExpired(notifications)
       else if(err.response.status === 404) notifications.error("Device is currently offline.", 'Operating mode');
       else if(err.response.data) notifications.error(err.response.data, 'Operating mode')
       else notifications.error("Something went wrong.", 'Operating mode');

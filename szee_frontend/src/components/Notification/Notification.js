@@ -1,15 +1,14 @@
 import { ToastNotification } from '@carbon/react';
-import PropTypes from 'prop-types';
 import { useContext, useEffect, useRef, useState } from 'react';
-import { NotificationStatus } from '../../consts/notificationStatus';
+import { NotificationType } from '../../consts/notificationType';
 import NotificationContext from '../../context/NotificationContext';
 
-const Notification = ({ notificationStatus, text, id, title, setMyHeight, closing, top }) => {
+const Notification = ({ type, id, title, subtitle, setHeight, closing, top }) => {
 
-  const notification = useContext(NotificationContext)
-  const innerToastRef = useRef()
+  const notification = useContext(NotificationContext);
+  const ref = useRef();
+  const [isGone, setGone] = useState(true);
 
-  let [isGone, setGone] = useState(true)
   useEffect(() => {
     setTimeout(() => {
       requestAnimationFrame(() => {
@@ -20,52 +19,37 @@ const Notification = ({ notificationStatus, text, id, title, setMyHeight, closin
 
 
   useEffect(() => {
-    setMyHeight(id, innerToastRef.current.offsetHeight + 8)
-
+    setHeight(id, ref.current.offsetHeight + 8)
     setTimeout(() => {
       notification.clear(id)
     }, 10000)
-  }, []) //eslint-disable-line react-hooks/exhaustive-deps
-
+  }, [])
 
   let kind = ''
 
-  if (notificationStatus === NotificationStatus.SUCCESS) kind = 'success'
-  if (notificationStatus === NotificationStatus.ERROR) kind = 'error'
-  if (notificationStatus === NotificationStatus.INFORMATIONAL) kind = 'info'
-  if (notificationStatus === NotificationStatus.WARNING) kind = 'warning'
+  switch(type) {
+    case(NotificationType.SUCCESS): kind = 'success'; break;
+    case(NotificationType.ERROR): kind = 'error'; break;
+    case(NotificationType.WARNING): kind = 'warning'; break;
+    default: kind = 'info'; break;
+  }
 
   return (
     <div
       className='notification'
-      style={{
-        '--y': top + 'px',
-        '--gone': isGone || closing ? 1 : 0,
-      }}
+      style={{ '--y': top + 'px', '--gone': isGone || closing ? 1 : 0 }}
     >
-      <div
-        ref={innerToastRef}
-      >
+      <div ref={ref}>
         <ToastNotification
-          aria-label='closes notification'
           onClose={() => notification.clear(id)}
           statusIconDescription='notification'
-          subtitle={text}
+          subtitle={subtitle}
           title={title}
           kind={kind}
         />
       </div>
     </div>
   )
-}
-
-Notification.defaultProps = {
-  notificationStatus: NotificationStatus.ERROR
-}
-
-Notification.propTypes = {
-  notificationStatus: PropTypes.oneOf(Object.values(NotificationStatus)),
-  text: PropTypes.string
 }
 
 export default Notification

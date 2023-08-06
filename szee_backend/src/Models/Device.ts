@@ -43,7 +43,7 @@ export default class Device extends Model<Device> {
   }
 }
 
-export interface IDeviceCredentails {
+export interface IDeviceCredentials {
   id: string;
   connectionString: string;
 }
@@ -68,11 +68,7 @@ export interface DeviceDTO {
   name: string;
 }
 
-export interface DeviceLiveDTO {
-  id: string;
-  userId: number;
-  type: Type;
-  name: string;
+export interface DeviceLiveDTO extends DeviceDTO {
   voltage: number;
   current: number;
   power: number;
@@ -81,17 +77,7 @@ export interface DeviceLiveDTO {
   status: Status;
 }
 
-export interface DeviceLiveWithSettingsDTO {
-  id: string;
-  userId: number;
-  type: Type;
-  name: string;
-  voltage: number;
-  current: number;
-  power: number;
-  kWh: number;
-  timestamp: string;
-  status: Status;
+export interface DeviceLiveWithSettingsDTO extends DeviceLiveDTO {
   relayState: Boolean;
   mode: number;
   rules: Array<any>;

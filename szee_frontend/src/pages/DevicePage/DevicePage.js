@@ -21,7 +21,7 @@ const DevicePage = ({ user, sessionExpired }) => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       getDevice(id, setDevice, sessionExpired, notifications);
-    }, 30000);
+    }, 45000);
     return () => clearInterval(intervalId);
   }, []);
 

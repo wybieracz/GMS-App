@@ -10,7 +10,7 @@ const DeviceMode = ({ device, setDevice, notifications, sessionExpired }) => {
 
   useEffect(() => {
     setMode(device.mode)
-  }, [device])
+  }, [device.loaded])
 
   return (
     <Stack gap={7} className='device-mode__content'>

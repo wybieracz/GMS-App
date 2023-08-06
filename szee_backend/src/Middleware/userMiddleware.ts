@@ -41,7 +41,7 @@ export async function checkPasswordCredential(req: Request, res: Response, next:
     })
     if(!user) return res.status(400).send('Unknown user.');
     const hashMatch = await compare(oldPassword, user.hash);
-    if(!hashMatch) return res.status(400).send('Bad credentails.');
+    if(!hashMatch) return res.status(400).send('Bad credentials.');
     next();
   } catch {
     return res.status(400).send('Something went wrong.');

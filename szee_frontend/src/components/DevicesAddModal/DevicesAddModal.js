@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { TextInput, Modal, Stack } from '@carbon/react';
 import { handleIdChange, handleConnectionStringChange, addDevice, closeModal } from './DevicesAddModalUtils';
 
-const DevicesAddModal = ({ modal, setModal, notifications, devices, setDevices }) => {
+const DevicesAddModal = ({ modal, setModal, notifications, devices, setDevices, sessionExpired }) => {
 
   const [id, setId] = useState("");
   const [connectionString, setConnectionString] = useState("");
@@ -18,10 +18,10 @@ const DevicesAddModal = ({ modal, setModal, notifications, devices, setDevices }
       secondaryButtonText='Cancel'
       onKeyDown={() => 
         addDevice(id, setId, connectionString, setConnectionString, setModal, notifications,
-        devices, setDevices, setIdInvalid, setConnectionStringInvalid)}
+        devices, setDevices, setIdInvalid, setConnectionStringInvalid, sessionExpired)}
       onRequestSubmit={() =>
         addDevice(id, setId, connectionString, setConnectionString, setModal, notifications,
-        devices, setDevices, setIdInvalid, setConnectionStringInvalid)}
+        devices, setDevices, setIdInvalid, setConnectionStringInvalid, sessionExpired)}
       onSecondarySubmit={() => closeModal(setModal, setId, setIdInvalid, setConnectionString, setConnectionStringInvalid)}
       onRequestClose={() => closeModal(setModal, setId, setIdInvalid, setConnectionString, setConnectionStringInvalid)}
       primaryButtonDisabled={idInvalid || connectionStringInvalid}>
