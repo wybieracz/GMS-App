@@ -9,6 +9,7 @@ The project involves the design and development of a device that allows remote c
 * IBM Carbon
 * Axios
 * Sequelize
+* PostgreSQL
 ## Features
 * Login / Create account
 * Add GMS device
