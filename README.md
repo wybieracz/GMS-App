@@ -56,9 +56,6 @@ App allows to create account. Registration form is validated. Every acction is c
 ![main](/ss/main.png)
 Main page contains statistics from all devices.
 
-![settings](/ss/settings.png)
-Settings allows to change user password.
-
 ![add_device](/ss/add_device.png)
 ![device_added](/ss/device_added.png)
 Device page shows data about all devices assigned to the account. Click `Add new` to add new device.
@@ -78,6 +75,9 @@ In time mode device will turn on or off after declared time.
 
 ![auto](/ss/auto.png)
 In auto mode user create device work schedule by creating up to 21 rules.
+
+![settings](/ss/settings.png)
+Settings allows to change device name, set data displayed on device (two of: date and time, voltage and current, power, power consumption), adjust display brightness, set first day of period and enable or disable auto resetter.
 
 ![unlink](/ss/unlink.png)
 After device unlink all historical telemetry data will be removed and it will be possible to assign it to other account.
