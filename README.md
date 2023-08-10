@@ -47,7 +47,7 @@ API_VERSION='api-version=2020-09-30'
 IOT_SAS='SharedAccessSignature sr=[iot_hub_name].azure-devices.net&[...]&skn=iothubowner'
 ```
 6. Open repository folder and run with `docker-compose up`.
-## Device
+## Screenshots
 ![register](/ss/register.png)
 ![register_bad](/ss/register_bad.png)
 ![login](/ss/login_creation.png)
